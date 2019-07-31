@@ -1,8 +1,8 @@
 # Fullstack Open 2019
 ### University of Helsinki - Department of Computer Science
 
-This is a git repository for exercises of the course Fullstack Open 2019. The repository follows the suggested form, where every sub section of the course (osa0, osa1, ...) is separated to its own subfolder under the course repository. 
+Git repository sisältää Helsingin yliopiston kurssin Fullstack Open 2019 palautettavat tehtävät. Repository rakenne seuraa materiaalissa ehdotettua tapaa, jossa jokainen kurssin osa on eritetytty omaksi alihakemistokseen (osa0, osa1, osa2, jne).
 
-The subfolder **osaN** contains:
-* **README_osaN.md**: sort notes of the week's exercises
-* Exercises of the week, where every individual exercise series is placed inside its own subfolder
+Jokainen hakemisto **osaN** sisältää: 
+* **README_osaN.md**: Yhteenvedon ja kommentit osan tehtävistä
+* Osan tehtävien lähdekoodin tehtäväkokonaisuuksittain alihakemistoihin jaoteltuna
