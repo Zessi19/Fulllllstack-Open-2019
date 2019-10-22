@@ -1,0 +1,9 @@
+post http://localhost:3001/api/blogs
+Content-Type: application/json
+
+{
+  "title": "Blog-D",
+  "author": "D-etu D-suku",
+  "url": "https://ddd-blog.com",
+  "likes": 20
+}
