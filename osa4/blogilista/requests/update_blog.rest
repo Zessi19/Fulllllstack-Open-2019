@@ -1,0 +1,9 @@
+PUT http://localhost:3001/api/blogs/5db317dbdd5e1863f36c0b32
+Content-Type: application/json
+
+{
+  "title": "UPDATE TEST",
+  "author": "Travis Takatukka",
+  "url": "https://test-test-test.com",
+  "likes": 0
+}

@@ -1,39 +1,39 @@
 const listHelper = require('../utils/list_helper')
-const testData = require('./testData')
+const unitTestData = require('./unitTestData')
 
 // 4.3 //
-describe('dummy', () => {
+describe('(4.3) dummy', () => {
   test('Dummy func: return one', () => {
-    const result = listHelper.dummy(testData.blogs)
+    const result = listHelper.dummy(unitTestData.blogs)
     expect(result).toBe(1)
   })
 })
 
 // 4.4 //
-describe('totalLikes', () => {
+describe('(4.4) totalLikes', () => {
   test('Test: empty bloglist', () => {
     const result = listHelper.totalLikes([])
     expect(result).toBe(0)
   })
 
   test('Test: blogsSingle', () => {
-    const result = listHelper.totalLikes(testData.blogsSingle)
+    const result = listHelper.totalLikes(unitTestData.blogsSingle)
     expect(result).toBe(80)
   })
 
   test('Test: blogsCornerCase', () => {
-    const result = listHelper.totalLikes(testData.blogsCornerCase)
+    const result = listHelper.totalLikes(unitTestData.blogsCornerCase)
     expect(result).toBe(30)
   })
 
   test('Test: blogs', () => {
-    const result = listHelper.totalLikes(testData.blogs)
+    const result = listHelper.totalLikes(unitTestData.blogs)
     expect(result).toBe(36)
   })
 })
 
 // 4.5 //
-describe('favoriteBlog', () => {
+describe('(4.5) favoriteBlog', () => {
   test('Test: empty bloglist', () => {
     const result = listHelper.favoriteBlog([])
     expect(result).toEqual(undefined)
@@ -45,7 +45,7 @@ describe('favoriteBlog', () => {
       author: "Travis Takatukka",
       likes: 80
     }
-    const result = listHelper.favoriteBlog(testData.blogsSingle)
+    const result = listHelper.favoriteBlog(unitTestData.blogsSingle)
     expect(result).toEqual(target)
   })
 
@@ -63,7 +63,7 @@ describe('favoriteBlog', () => {
       }
     ]
 
-    const result = listHelper.favoriteBlog(testData.blogsCornerCase)
+    const result = listHelper.favoriteBlog(unitTestData.blogsCornerCase)
     expect(target).toContainEqual(result)
   })
 
@@ -73,13 +73,13 @@ describe('favoriteBlog', () => {
       author: "Edsger W. Dijkstra",
       likes: 12
     }
-    const result = listHelper.favoriteBlog(testData.blogs)
+    const result = listHelper.favoriteBlog(unitTestData.blogs)
     expect(result).toEqual(target)
   })
 })
 
 // 4.6 //
-describe('mostBlogs', () => {
+describe('(4.6) mostBlogs', () => {
   test('Test: empty bloglist', () => {
     const result = listHelper.mostBlogs([])
     expect(result).toEqual(undefined)
@@ -90,7 +90,7 @@ describe('mostBlogs', () => {
       author: "Travis Takatukka",
       blogs: 1
     }
-    const result = listHelper.mostBlogs(testData.blogsSingle)
+    const result = listHelper.mostBlogs(unitTestData.blogsSingle)
     expect(result).toEqual(target)
   })
 
@@ -106,7 +106,7 @@ describe('mostBlogs', () => {
       }
     ]
 
-    const result = listHelper.mostBlogs(testData.blogsCornerCase)
+    const result = listHelper.mostBlogs(unitTestData.blogsCornerCase)
     expect(target).toContainEqual(result)
   })
 
@@ -115,13 +115,13 @@ describe('mostBlogs', () => {
       author: "Robert C. Martin",
       blogs: 3
     }
-    const result = listHelper.mostBlogs(testData.blogs)
+    const result = listHelper.mostBlogs(unitTestData.blogs)
     expect(result).toEqual(target)
   })
 })
 
 // 4.7 //
-describe('mostLikes', () => {
+describe('(4.7) mostLikes', () => {
   test('Test: empty bloglist', () => {
     const result = listHelper.mostLikes([])
     expect(result).toEqual(undefined)
@@ -132,7 +132,7 @@ describe('mostLikes', () => {
       author: "Travis Takatukka",
       likes: 80
     }
-    const result = listHelper.mostLikes(testData.blogsSingle)
+    const result = listHelper.mostLikes(unitTestData.blogsSingle)
     expect(result).toEqual(target)
   })
 
@@ -151,7 +151,7 @@ describe('mostLikes', () => {
         likes: 10
       }
     ]
-    const result = listHelper.mostLikes(testData.blogsCornerCase)
+    const result = listHelper.mostLikes(unitTestData.blogsCornerCase)
     expect(target).toContainEqual(result)
   })
 
@@ -160,7 +160,7 @@ describe('mostLikes', () => {
       author: "Edsger W. Dijkstra",
       likes: 17
     }
-    const result = listHelper.mostLikes(testData.blogs)
+    const result = listHelper.mostLikes(unitTestData.blogs)
     expect(result).toEqual(target)
   })
 })
