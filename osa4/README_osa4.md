@@ -18,7 +18,12 @@ Routejen supertestit on jaoteltu kutsumetodien mukaan ja lisäksi vielä numeroi
 Testit: test/api_blogs.test.js
 Initial Data: supertest_helper.js
 
-Run: npx jest tests/api_blogs.test.js --runInBand
+HUOM! Testejä ei ole korjattu yhteensopiviksi C ja D kohdan muutosten kanssa, koska tämä ei ollut pakollista ja tein jo "ylimääräistä" työtä tekemällä testit tehtäviin 4.13 ja 4.14. Githubista löytyy kuitenkin aiemmin palautettu versio, jossa B-kohdan tehtävät toimivat.
 
 
-## Part C ja D ()
+## Part C ja D (7/7)
+
+Tehtävissä on seurattu materiaalin mallia, niiltä osin kuin se oli mahdollista.
+
+Testit : test/api_users.test.js
+Run: npx jest tests/api_users.test.js --runInBand
