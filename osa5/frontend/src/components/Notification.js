@@ -20,4 +20,4 @@ const Notification = ({ alertMessage, errorMessage }) => {
   )
 }
 
-export default Notification 
+export default Notification

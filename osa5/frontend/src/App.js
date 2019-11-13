@@ -3,9 +3,10 @@ import './index.css'
 
 import Blog from './components/Blog'
 import CreateBlog from './components/CreateBlog'
+import Togglable from './components/Togglable'
 import Notification from './components/Notification'
 
-import loginService from './services/login' 
+import loginService from './services/login'
 import blogService from './services/blogs'
 
 const App = () => {
@@ -17,7 +18,7 @@ const App = () => {
   const [alertMessage, setAlertMessage] = useState(null)
   const [errorMessage, setErrorMessage] = useState(null)
 
-  // USE EFFECTS //
+  // Use Effects and Refs //
   useEffect(() => {
     blogService
       .getAll()
@@ -34,7 +35,9 @@ const App = () => {
     }
   }, [])
 
-  // HANDLE FUNCS //
+  const blogFormRef = React.createRef()
+
+  // Login/Logout //
   const handleLogin = async (event) => {
     event.preventDefault()
 
@@ -43,9 +46,9 @@ const App = () => {
 
       window.localStorage
         .setItem('loggedBlogAppUser', JSON.stringify(userToLogin))
-      
+
       blogService.setToken(userToLogin.token)
-      setUser(userToLogin)  
+      setUser(userToLogin)
       setUsername('')
       setPassword('')
 
@@ -57,13 +60,54 @@ const App = () => {
 
   const handleLogout = (event) => {
     event.preventDefault()
-
     window.localStorage.removeItem('loggedBlogAppUser')
     blogService.nullToken()
     window.location.reload()
   }
 
-  // FORMS //
+  // OnClick Funcs
+  const addLike = async () => {
+    const blogToUpdate = blogFormRef.current.getBlog()
+    blogToUpdate.likes = blogToUpdate.likes+1
+
+    try {
+      await blogService.update(blogToUpdate.id, blogToUpdate)
+
+      const updatedBlogs = blogs.map( i => {
+        if (i.id === blogToUpdate.id) {
+          i.likes = i.likes+1
+        }
+        return i
+      })
+      setBlogs(updatedBlogs)
+
+    } catch (exception) {
+      setErrorMessage(exception.response.data.error)
+      setTimeout(() => {setErrorMessage(null)}, 5000)
+    }
+  }
+
+  const deleteBlog = async () => {
+    const blogToRemove = blogFormRef.current.getBlog()
+    const message = `Are you sure to delete: ${blogToRemove.title}?`
+
+    if (window.confirm(message)) {
+      try {
+        await blogService.del(blogToRemove.id)
+
+        setBlogs(blogs.filter(i => i.id !== blogToRemove.id))
+
+        setAlertMessage(`Deleted blog ${blogToRemove.title}`)
+        setTimeout(() => {setAlertMessage(null)}, 5000)
+
+      } catch (exception) {
+        setErrorMessage(exception.response.data.error)
+        setTimeout(() => {setErrorMessage(null)}, 5000)
+      }
+    }
+  }
+
+  // Forms //
   const loginForm = () => (
     <form onSubmit={handleLogin}>
       <div>
@@ -92,16 +136,28 @@ const App = () => {
     <form onSubmit={handleLogout}>
       <div>
         <p>
-          Logged in as <b>{user.name}</b>       
+          Logged in as <b>{user.username}</b>
           <button type="submit">logout</button>
         </p>
       </div>
     </form>
   )
 
-  // FUNCS //
-  const showAllBlogs = () => {
-    return blogs.map( i => <Blog key={i.id} blog={i}/> )
+  // List blogs //
+  const listBlogs = () => {
+    blogs.sort( (a,b) => b.likes - a.likes )
+
+    return blogs.map( i =>
+      <Blog
+        key={i.id}
+        blog={i}
+        loggedUser={user}
+
+        addLike={addLike}
+        deleteBlog={deleteBlog}
+        ref={blogFormRef}
+      />
+    )
   }
 
   // RENDER //
@@ -123,14 +179,18 @@ const App = () => {
       <Notification alertMessage={alertMessage} errorMessage={errorMessage}/>
       {logoutForm()}
 
-      <CreateBlog 
-        blogs={blogs} setBlogs={setBlogs}
-        alertMessage={alertMessage} setAlertMessage={setAlertMessage}
-        errorMessage={errorMessage} setErrorMessage={setErrorMessage}  
-      />
-      {showAllBlogs()}
+      <Togglable buttonLabel="New Blog">
+        <CreateBlog
+          blogs={blogs} setBlogs={setBlogs}
+          setAlertMessage={setAlertMessage}
+          setErrorMessage={setErrorMessage}
+        />
+      </Togglable>
+
+      {'\u00A0'}
+      {listBlogs()}
     </div>
   )
 }
 
-export default App;
+export default App

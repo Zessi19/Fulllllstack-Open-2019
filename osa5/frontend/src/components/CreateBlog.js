@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import blogService from '../services/blogs'
 
-const CreateBlog = ({blogs, setBlogs, alertMessage, setAlertMessage, errorMessage, setErrorMessage}) => {
+const CreateBlog = ({ blogs, setBlogs, setAlertMessage, setErrorMessage }) => {
   const [title, setTitle] = useState('')
   const [author, setAuthor] = useState('')
   const [url, setUrl] = useState('')
@@ -62,7 +62,7 @@ const CreateBlog = ({blogs, setBlogs, alertMessage, setAlertMessage, errorMessag
         />
       </div>
 
-      <button type="submit">Create Blog</button>
+      <button type="submit">create</button>
     </form>
   )
 
@@ -70,7 +70,6 @@ const CreateBlog = ({blogs, setBlogs, alertMessage, setAlertMessage, errorMessag
     <div>
       <h2>Create new Blog</h2>
       {newBlogForm()}
-      {'\u00A0'}
     </div>
   )
 }

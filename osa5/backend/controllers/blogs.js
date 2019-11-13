@@ -72,7 +72,7 @@ router.delete('/:id', async (request, response) => {
     await Blog.findByIdAndRemove(request.params.id)
     response.status(204).end()
   } else {
-    response.status(404).end()
+    response.status(404).json({ error: 'Blog not found or invalid authorization' })
   }
 })
 
