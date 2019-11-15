@@ -62,13 +62,13 @@ const Blog = React.forwardRef((props, ref) => {
 
   // Render
   return (
-    <div style={blogStyle}>
+    <div style={blogStyle} className="blogView">
 
-      <div style={hideWhenVisible} onClick={toggleVisibility}>
+      <div style={hideWhenVisible} onClick={toggleVisibility} className="defaultView">
         {props.blog.title} {props.blog.author}
       </div>
 
-      <div style={showWhenVisible} onClick={toggleVisibility}>
+      <div style={showWhenVisible} onClick={toggleVisibility} className="expandedView">
         <div><b>Title:</b> {props.blog.title}</div>
         <div><b>Author:</b> {props.blog.author}</div>
         <div><b>URL:</b> {props.blog.url}</div>
