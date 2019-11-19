@@ -1,29 +1,31 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { useField } from '../hooks'
 import blogService from '../services/blogs'
 
 const CreateBlog = ({ blogs, setBlogs, setAlertMessage, setErrorMessage }) => {
-  const [title, setTitle] = useState('')
-  const [author, setAuthor] = useState('')
-  const [url, setUrl] = useState('')
+  const title = useField('text')
+  const author = useField('text')
+  const url = useField('text')
 
   const handleAddBlog = async (event) => {
     event.preventDefault()
+
     try {
       const blogObject = {
-        title: title,
-        author: author,
-        url: url,
+        title: title.value,
+        author: author.value,
+        url: url.value,
         likes: 0
       }
 
       const newBlog = await blogService.create(blogObject)
       setBlogs(blogs.concat(newBlog))
 
-      setTitle('')
-      setAuthor('')
-      setUrl('')
+      title.reset()
+      author.reset()
+      url.reset()
 
-      setAlertMessage(`Added new blog: ${title}`)
+      setAlertMessage(`Added new blog: ${title.value}`)
       setTimeout(() => {setAlertMessage(null)}, 5000)
 
     } catch (exception) {
@@ -36,30 +38,15 @@ const CreateBlog = ({ blogs, setBlogs, setAlertMessage, setErrorMessage }) => {
     <form onSubmit={handleAddBlog}>
       <div>
         title:
-        <input
-          type="text"
-          value={title}
-          name="Title"
-          onChange={({ target }) => setTitle(target.value)}
-        />
+        <input {...title}/>
       </div>
       <div>
         author:
-        <input
-          type="text"
-          value={author}
-          name="Author"
-          onChange={({ target }) => setAuthor(target.value)}
-        />
+        <input {...author}/>
       </div>
       <div>
         url:
-        <input
-          type="text"
-          value={url}
-          name="Url"
-          onChange={({ target }) => setUrl(target.value)}
-        />
+        <input {...url}/>
       </div>
 
       <button type="submit">create</button>
