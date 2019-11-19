@@ -1,11 +1,11 @@
 # Osa 5
 
-Osan 5 hakemisto sisältää Blogi-sovelluksen frontendin ja backendin sekä viimeisen tehtävän "Ultimate Hooks" omiksi alihakemistoiksi eriteltynä. Backendin pohjana on käytetty osan 4 mallivastausta.
+Osan 5 hakemisto sisältää Blogi-sovelluksen frontendin ja backendin sekä viimeisen tehtävän "Ultimate Hooks" omiksi alihakemistoiksi eriteltyinä. Backendin pohjana on käytetty osan 4 mallivastausta.
 
 
 ## Part A (4/4)
 
-Uusien blogien luonti 5.3 (CreateBlog.js) ja virheilmoituksen/notifikaation renderöinti 5.4 (Notification.js) on eriytetty omiksi React-komponentiksi kuten tehtävänannossa neuvotaan. Virheilmoituksena käyttäjälle näytetään backendin frontendille lähettämä errorMessage (koskee myös Part B). Virheilmoitusten ja notifikaatioiden tyylit on määritelty tiedostossa srs/index.css.
+Uusien blogien luonti 5.3 (CreateBlog.js) ja virheilmoituksen/notifikaation renderöinti 5.4 (Notification.js) on eriytetty omiksi React-komponentiksi kuten tehtävänannossa neuvotaan. Virheilmoituksena käyttäjälle näytetään backendin frontendille lähettämä errorMessage (koskee myös B-osaa). Virheilmoitusten ja notifikaatioiden tyylit on määritelty tiedostossa srs/index.css.
 
 
 ## Part B (8/8)
