@@ -6,7 +6,7 @@
 
 Pelkistetty unicafee-sovellus sisältää testin jokaiselle reducerin actionille (GOOD, OK, BAD ja ZERO). Kaikki testit myös tarkistavat deep-freeze-kirjaston avulla, että reducer on puhdasfunktio.
 
-Go folder:     osa6/unicafe-redux
+Go folder:     osa6/unicafe-redux <br />
 Run command:   CI=true npm test
 
 
@@ -30,7 +30,7 @@ Tehtävänannossa ei specifioitu pitääkö Filter-komponenttia kutsua AnecdoteL
 Db.json serverin ID tallennetaan stringeinä (eikä integereinä), koska tiedoston pohjassa ID:n arvot oltiin määritelty stringeinä. Tästä seuraa uusien lisättyjen blogien melko kryptiset ID:t, mutta sovelluksen toimivuuden kannalta tällä ei tietenkään ole merkitystä.
 
 #### Huom 2.
-React antaa warning (ei kuitenkaan erroria), kun materiaalin tapaan useEffectin taulukkoon ei määritellä riippuvuuksia (React Hook useEffect has a missing dependency: ...). Lisäämällä taulukkoo propsit, varoitushäviää. Yritin testata sovelluksen toimintaa molemmissa tapauksissa, enkä huomannut bugeja kummassakaan tapauksessa. Jätin kuitenkin useEffectin taulukon tyhjäksi materiaalin tavoin palautukseen, eli warning tulostuu nyt konsoliin.
+React antaa warning (ei kuitenkaan erroria), kun materiaalin tapaan useEffectin taulukkoon ei määritellä riippuvuuksia (React Hook useEffect has a missing dependency: ...). Lisäämällä useEfectille parametrina annettavaan taulukkoo propsit varoitus häviää. Yritin testata sovelluksen toimintaa molemmissa tapauksissa, enkä huomannut bugeja kummassakaan tapauksessa. Jätin kuitenkin useEffectin taulukon tyhjäksi materiaalin tavoin palautukseen, eli warning tulostuu nyt konsoliin.
 
 #### Huom 3.
 Onnistui mielestäni saamaan tehtävässä 6.21 yhdistetyn action-creatorin (setAndRemoveNotification) toimivaan halutulla tavalla, vaikka tämä osoittautui yllätävän vaikeaksi. Jätin kuitenkin aiemmat action-creatorit setNotification ja removeNotification vielä kommentoituina tiedostoon notificationReducer.js.
