@@ -1,0 +1,10 @@
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVOYW1lMSIsImlkIjoiNWRiOGE5YmE3YTUxNTI0OGMyMWI5NGM5IiwiaWF0IjoxNTczMTc0MDczfQ.O6sfb66Q2VzQUjILNNH9mPYRoKXIT25uUhK-UCnBbww
+
+{
+  "title": "Blog-E",
+  "author": "E-etu E-suku",
+  "url": "https://eee-blog.com",
+  "likes": 25
+}
