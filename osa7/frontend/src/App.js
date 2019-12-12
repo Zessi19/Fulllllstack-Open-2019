@@ -4,8 +4,10 @@ import { connect } from 'react-redux'
 
 import Menu from './components/Menu'
 import Login from './components/Login'
+import User from './components/User'
 import UserList from './components/UserList'
 import BlogList from './components/BlogList'
+import BlogSingleView from './components/BlogSingleView'
 import CreateBlog from './components/CreateBlog'
 import Togglable from './components/Togglable'
 import TopBanner from './components/TopBanner'
@@ -30,6 +32,12 @@ const App = (props) => {
       props.localStorageLogin(userToLogin)
     }
   },[])
+
+  const userById = (id) =>
+    props.users.find(i => i.id === id)
+
+  const blogById = (id) =>
+    props.blogs.find(i => i.id === id)
 
   // Render
   if (props.loggedUser === null) {
@@ -62,6 +70,14 @@ const App = (props) => {
           <UserList/>
         }/>
 
+        <Route exact path="/users/:id" render={ ({ match }) => 
+          <User renderedUser={userById(match.params.id)}/>
+        }/>
+
+        <Route exact path="/blogs/:id" render={ ({ match }) => 
+          <BlogSingleView renderedBlog={blogById(match.params.id)}/>
+        }/>
+
       </Router>
     </div>
   )
@@ -74,7 +90,11 @@ const mapDispatchToProps = {
 }
 
 const mapStateToProps = (state) => {
-  return { loggedUser: state.loggedUser }
+  return {
+    blogs: state.blogs,
+    loggedUser: state.loggedUser,
+    users: state.users,
+  }
 }
 
 const ConnectedApp
