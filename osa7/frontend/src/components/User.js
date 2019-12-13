@@ -1,9 +1,9 @@
 import React from 'react'
-//import { connect } from 'react-redux'
+import { Segment, Header } from 'semantic-ui-react'
 
 const User = (props) => {
 
-  if ( props.renderedUser === undefined) { 
+  if ( props.renderedUser === undefined) {
     return null
   }
 
@@ -15,7 +15,12 @@ const User = (props) => {
 
   return (
     <div>
-      <h2>{props.renderedUser.username}</h2>
+      <Segment inverted>
+        <Header as='h3' inverted color='blue'>
+          {props.renderedUser.username}
+        </Header>
+      </Segment>
+
       <h3>Added Blogs</h3>
       <ul>
         {listBlogsByUSer()}

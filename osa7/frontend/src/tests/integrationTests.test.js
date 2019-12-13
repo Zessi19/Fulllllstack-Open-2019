@@ -1,6 +1,6 @@
 import React from 'react'
 import { render, waitForElement } from '@testing-library/react'
-import { prettyDOM } from '@testing-library/dom'
+//import { prettyDOM } from '@testing-library/dom'
 
 jest.mock('../services/blogs')
 import App from '../App'
@@ -28,10 +28,10 @@ describe('<App/>', () => {
       username: 'uName1',
       name: 'n1',
       token: '123123123'
-    } 
+    }
     localStorage.setItem('loggedBlogAppUser', JSON.stringify(user))
 
-    const component = render(<App/>)  
+    const component = render(<App/>)
     component.rerender(<App/>)
 
     await waitForElement(

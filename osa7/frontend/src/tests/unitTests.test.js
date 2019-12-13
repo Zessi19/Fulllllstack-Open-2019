@@ -1,6 +1,6 @@
 import React from 'react'
 import { render, fireEvent } from '@testing-library/react'
-import { prettyDOM } from '@testing-library/dom'
+//import { prettyDOM } from '@testing-library/dom'
 
 import Blog from '../components/Blog'
 import SimpleBlog from '../components/SimpleBlog'
@@ -71,7 +71,7 @@ describe('Blog test', () => {
 
     const divDefault = component.container.querySelector('.defaultView')
     const divExpanded = component.container.querySelector('.expandedView')
-    
+
     expect(divDefault).toHaveStyle('')
     expect(divDefault).toHaveTextContent('titleX authorX')
     expect(divExpanded).toHaveStyle('display: none')
@@ -91,7 +91,6 @@ describe('Blog test', () => {
     const divDefault = component.container.querySelector('.defaultView')
     const divExpanded = component.container.querySelector('.expandedView')
     fireEvent.click(divDefault)
-    
     expect(divDefault).toHaveStyle('display: none')
 
     expect(divExpanded).toHaveStyle('')

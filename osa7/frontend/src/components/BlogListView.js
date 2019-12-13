@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
- 
+
 const BlogListView = (props) => {
 
   const blogStyle = {
@@ -15,7 +15,7 @@ const BlogListView = (props) => {
   return (
     <div style={blogStyle} className="blogView">
       <Link to={`/blogs/${props.blog.id}`}>
-          {props.blog.title}
+        {props.blog.title}
       </Link>
     </div>
   )

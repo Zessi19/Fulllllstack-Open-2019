@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { useField } from '../hooks'
+import { Form, Button } from 'semantic-ui-react'
 
 import { createBlog } from '../reducers/blogReducer'
 import { setAndRemoveError, setAndRemoveAlert } from '../reducers/notificationReducer'
@@ -17,7 +18,8 @@ const CreateBlog = (props) => {
       title: title.value,
       author: author.value,
       url: url.value,
-      likes: 0
+      likes: 0,
+      comments: []
     }
     props.createBlog(blogObject)
     
@@ -28,13 +30,21 @@ const CreateBlog = (props) => {
 
   const newBlogForm = () => {
     return (
-      <form onSubmit={handleAddBlog}>
-        <div> title: <input {...title}/></div>
-        <div> author: <input {...author}/></div>
-        <div> url: <input {...url}/></div>
-
-        <button type="submit">create</button>
-      </form>
+      <Form onSubmit={handleAddBlog}>
+        <Form.Field>
+          <label> title: </label>
+          <input {...title}/>
+        </Form.Field>
+        <Form.Field>
+          <label> author: </label>
+          <input {...author}/>
+        </Form.Field>
+        <Form.Field>
+          <label> url: </label>
+          <input {...url}/>
+        </Form.Field>
+        <Button color='blue' type="submit">create</Button>
+      </Form>
     )
   }
 

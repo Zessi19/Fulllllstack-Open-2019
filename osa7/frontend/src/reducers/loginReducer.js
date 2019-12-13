@@ -6,7 +6,7 @@ const loginReducer = (state=null, action) => {
   switch (action.type) {
     case 'SET_USER':
       return action.data
-    
+
     case 'REMOVE_USER':
       return null
 
@@ -25,7 +25,7 @@ export const loginToApp = (username, password) => {
 
       dispatch({
         type: 'SET_USER',
-        data: {...userToLogin}
+        data: { ...userToLogin }
       })
 
     } catch (exception) {
@@ -39,7 +39,7 @@ export const localStorageLogin = (userObject) => {
     blogService.setToken(userObject.token)
     dispatch({
       type: 'SET_USER',
-      data: {...userObject}
+      data: { ...userObject }
     })
   }
 }

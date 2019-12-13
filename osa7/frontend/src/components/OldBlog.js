@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { deleteBlog, updateBlog } from '../reducers/blogReducer'
- 
+
 const Blog = (props) => {
 
-  // Visibility states and Inline-Style 
+  // Visibility states and Inline-Style
   const [visible, setVisible] = useState(false)
   const hideWhenVisible = { display: visible ? 'none' : '' }
   const showWhenVisible = { display: visible ? '' : 'none' }

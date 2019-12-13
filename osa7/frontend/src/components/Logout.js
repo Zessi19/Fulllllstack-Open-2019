@@ -14,10 +14,10 @@ const Logout = (props) => {
 
   const logoutForm = () => (
     <form onSubmit={handleLogout}>
-        <p>
-          Logged in as <b>{props.loggedUser.username}</b>
-          <button type="submit">logout</button>
-        </p>
+      <p>
+        Logged in as <b>{props.loggedUser.username}</b>
+        <button type="submit">logout</button>
+      </p>
     </form>
   )
 

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { Container } from 'semantic-ui-react'
 
 import Menu from './components/Menu'
 import Login from './components/Login'
@@ -42,44 +43,48 @@ const App = (props) => {
   // Render
   if (props.loggedUser === null) {
     return (
-      <div>
-        <TopBanner/>
-        <Notification/>
-        <Login/>
-      </div>
+      <Container>
+        <div>
+          <TopBanner/>
+          <Notification/>
+          <Login/>
+        </div>
+      </Container>
     )
   }
 
   return (
-    <div>
-      <Router>
-        <TopBanner/>
-        <Menu/>
-        <Notification/>
+    <Container>
+      <div>
+        <Router>
+          <TopBanner/>
+          <Menu/>
+          <Notification/>
 
-        <Route exact path="/" render={ () =>
-          <div>
-            <Togglable buttonLabel="New Blog">
-              <CreateBlog/>
-            </Togglable>
-            <BlogList/>
-          </div>
-        }/>
+          <Route exact path="/" render={ () =>
+            <div>
+              <Togglable buttonLabel="New Blog">
+                <CreateBlog/>
+              </Togglable>
+              <BlogList/>
+            </div>
+          }/>
 
-        <Route exact path="/users" render={ () =>
-          <UserList/>
-        }/>
+          <Route exact path="/users" render={ () =>
+            <UserList/>
+          }/>
 
-        <Route exact path="/users/:id" render={ ({ match }) => 
-          <User renderedUser={userById(match.params.id)}/>
-        }/>
+          <Route exact path="/users/:id" render={ ({ match }) =>
+            <User renderedUser={userById(match.params.id)}/>
+          }/>
 
-        <Route exact path="/blogs/:id" render={ ({ match }) => 
-          <BlogSingleView renderedBlog={blogById(match.params.id)}/>
-        }/>
+          <Route exact path="/blogs/:id" render={ ({ match }) =>
+            <BlogSingleView renderedBlog={blogById(match.params.id)}/>
+          }/>
 
-      </Router>
-    </div>
+        </Router>
+      </div>
+    </Container>
   )
 }
 

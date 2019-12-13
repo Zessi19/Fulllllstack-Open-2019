@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { Table, Segment, Header } from 'semantic-ui-react'
 
 const UserList = (props) => {
 
@@ -13,30 +14,38 @@ const UserList = (props) => {
 
   return (
     <div>
-      <h2>Users</h2>
-      <table style={{width: '400px'}}>
-        <tbody>
-        <tr align='left'>
-          <th>Username</th>
-          <th>Blogs created</th>
-        </tr>
+      <Segment inverted>
+        <Header as='h3' inverted color='blue'>
+          Users
+        </Header>
+      </Segment>
+
+      <Table striped celled>
+        <Table.Body>
+          <Table.Row>
+            <Table.Cell> Username </Table.Cell>
+            <Table.Cell> Blogs created </Table.Cell>
+          </Table.Row>
           {userRows()}
-        </tbody>
-      </table>
+        </Table.Body>
+      </Table>
     </div>
   )
 }
 
 const ListedUser = (props) => {
   return (
-    <tr>
-      <td>
+    <Table.Row>
+      <Table.Cell>
         <Link to={`/users/${props.listedUser.id}`}>
           {props.listedUser.username}
         </Link>
-      </td>
-      <td>{Object.keys(props.listedUser.blogs).length}</td>
-    </tr>
+      </Table.Cell>
+
+      <Table.Cell>
+        {Object.keys(props.listedUser.blogs).length}
+      </Table.Cell>
+    </Table.Row>
 )}
 
 const mapStateToProps = (state) => {

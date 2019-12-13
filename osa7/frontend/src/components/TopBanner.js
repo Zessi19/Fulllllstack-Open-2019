@@ -1,9 +1,13 @@
 import React from 'react'
+import { Header, Segment } from 'semantic-ui-react'
 
 const TopBanner = () => {
-
   return (
-    <h1>Blogs</h1>
+    <Segment inverted>
+      <Header as='h1' inverted color='blue'>
+        Blogs
+      </Header>
+    </Segment>
   )
 }
 

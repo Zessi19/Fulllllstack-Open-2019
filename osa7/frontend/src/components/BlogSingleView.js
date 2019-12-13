@@ -1,7 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import Comments from './Comments'
+import { Segment, Header } from 'semantic-ui-react'
 import { deleteBlog, updateBlog } from '../reducers/blogReducer'
- 
+
 const BlogSingleView = (props) => {
   if (props.renderedBlog === undefined) {
     return null
@@ -49,18 +51,25 @@ const BlogSingleView = (props) => {
 
   return (
     <div>
-      <h2>{props.renderedBlog.title}</h2>
-        <div><b>Author:</b> {props.renderedBlog.author}</div>
-        <div><b>URL:</b><a href={`${props.renderedBlog.url}`}>{props.renderedBlog.url}</a></div>
-        <div><b>Likes:</b> {props.renderedBlog.likes}</div>
-        <div><b>Added by User:</b> {showName()}</div>
+      <Segment inverted>
+        <Header as='h3' inverted color='blue'>
+          {props.renderedBlog.title}
+        </Header>
+      </Segment>
 
-        <div><button onClick={handleAddLike}>Like</button></div>
-        <div>
-          {showDeleteButton()
-            ? <div><button onClick={handleDeleteBlog}>Delete</button></div>
-            : null}
-        </div>
+      <div><b>Author:</b> {props.renderedBlog.author}</div>
+      <div><b>URL:</b><a href={`${props.renderedBlog.url}`}>{props.renderedBlog.url}</a></div>
+      <div><b>Likes:</b> {props.renderedBlog.likes}</div>
+      <div><b>Added by User:</b> {showName()}</div>
+
+      <div><button onClick={handleAddLike}>Like</button></div>
+      <div>
+        {showDeleteButton()
+          ? <div><button onClick={handleDeleteBlog}>Delete</button></div>
+          : null}
+      </div>
+
+      <Comments renderedBlog={props.renderedBlog}/>
     </div>
   )
 }
