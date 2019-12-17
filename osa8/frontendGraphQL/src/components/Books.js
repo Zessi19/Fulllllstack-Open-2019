@@ -1,6 +1,8 @@
-import React from 'react'
+import React, {useState} from 'react'
 
 const Books = (props) => {
+  const [genre, setGenre] = useState('all')
+
   if (!props.show) {
     return null
   }
@@ -9,6 +11,22 @@ const Books = (props) => {
   }
 
   const books = props.result.data.allBooks
+
+  const allGenreElements = [].concat.apply(['all'], books.map(i => i.genres))
+  const uniqueGenres = Array.from(new Set(allGenreElements))
+
+  const genreButtons = () => {
+    return uniqueGenres.map( i =>
+    <button key={i} onClick={() => setGenre(i)}>{i}</button>
+    )
+  }
+
+  const filteredBooks = () => {
+    if (genre === 'all') {
+      return books
+    }
+      return books.filter(i => i.genres.indexOf(genre) > -1)
+  }
 
   return (
     <div>
@@ -25,15 +43,19 @@ const Books = (props) => {
               published
             </th>
           </tr>
-          {books.map(a =>
+          {filteredBooks().map(a =>
             <tr key={a.title}>
               <td>{a.title}</td>
-              <td>{a.author}</td>
+              <td>{a.author.name}</td>
               <td>{a.published}</td>
             </tr>
           )}
         </tbody>
       </table>
+
+      <div>
+        {genreButtons()}
+      </div>
     </div>
   )
 }
